@@ -5,39 +5,49 @@
  */
 function display() {
   const value = this.value;
-  const result = document.getElementById("result");
-    let op;
-  if (!isNaN(parseInt(value))) {
-    console.log("Sono il numero: " + value);
-    op = result.innerHTML += value;
-    console.log(op);
-  } else {
+  const displayElem = document.getElementById("result");
 
-    switch (value) {
-      case "+":
-        console.log("somma");
-        break;
-      case "-":
-        console.log("sottrazione");
-        break;
-      case "÷":
-        console.log("divisione");
-        break;
-      case "x":
-        console.log("moltiplicazione");
-        break;
+  let numConcat = displayElem;
 
-      default:
-        console.log("cancella");
-        break;
-    }
-    result.innerHTML = "0";
-
+  if (isNaN(parseInt(value))) {
+    const result = calculate(parseInt(numConcat.innerHTML), value);
+    numConcat.innerHTML = "";
+  } else if (!isNaN(parseInt(value))) {
+    numConcat.innerHTML += parseInt(value);
+    console.log("Concatenazione: " + numConcat.innerHTML);
   }
-  
+  console.log(result.innerHTML);
 }
 
+function calculate(operand, operator) {
+  console.log("Numero: " + operand + " Operazione: " + operator);
 
-// function operation() {
+  console.log();
+  switch (operator) {
+    case "+":
+      console.log("somma");
+      resultOp += operand;
+      console.log("Somma: " + resultOp);
+      break;
+    case "-":
+      console.log("sottrazione");
+      resultOp -= operand;
 
-// }
+      break;
+    case "x":
+      console.log("moltiplicazione");
+      resultOp *= operand;
+
+      break;
+    case "÷":
+      console.log("divisione");
+      resultOp /= operand;
+
+      break;
+    case "c":
+      resultOp = 0;
+      break;
+  }
+
+  return resultOp;
+}
