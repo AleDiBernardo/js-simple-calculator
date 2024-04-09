@@ -5,7 +5,6 @@
  */
 function display() {
   const value = this.value;
-  const displayElem = document.getElementById("result");
 
   let numConcat = displayElem;
 
@@ -19,35 +18,70 @@ function display() {
   console.log(result.innerHTML);
 }
 
-function calculate(operand, operator) {
-  console.log("Numero: " + operand + " Operazione: " + operator);
+// function calculate(operand, operator) {
+//   console.log("Numero: " + operand + " Operazione: " + operator);
 
-  console.log();
+//   console.log();
+//   switch (operator) {
+//     case "+":
+//       console.log("somma");
+//       resultOp += operand;
+//       console.log("Somma: " + resultOp);
+//       break;
+//     case "-":
+//       console.log("sottrazione");
+//       resultOp -= operand;
+
+//       break;
+//     case "x":
+//       console.log("moltiplicazione");
+//       resultOp *= operand;
+
+//       break;
+//     case "÷":
+//       console.log("divisione");
+//       resultOp /= operand;
+
+//       break;
+//     case "c":
+//       resultOp = 0;
+//       break;
+//   }
+
+//   return resultOp;
+// }
+
+function clearDisplay() {
+  displayElem.innerHTML = "";
+}
+
+function calculate() {
+  secNum = parseInt(displayElem.innerHTML);
+  console.log("Secondo Numero: " + secNum);
   switch (operator) {
     case "+":
-      console.log("somma");
-      resultOp += operand;
-      console.log("Somma: " + resultOp);
+      displayElem.innerHTML = "" + (firstNum + secNum);
       break;
     case "-":
-      console.log("sottrazione");
-      resultOp -= operand;
-
+      displayElem.innerHTML = "" + (firstNum - secNum);
       break;
     case "x":
-      console.log("moltiplicazione");
-      resultOp *= operand;
-
+      displayElem.innerHTML = "" + (firstNum * secNum);
       break;
     case "÷":
-      console.log("divisione");
-      resultOp /= operand;
-
+      displayElem.innerHTML = "" + (firstNum / secNum);
       break;
-    case "c":
-      resultOp = 0;
+
+    default:
       break;
   }
 
-  return resultOp;
+  // console.log("calculate");
+}
+
+function operatorFunc() {
+  operator = this.value;
+  firstNum = parseInt(displayElem.innerHTML);
+  displayElem.innerHTML = "";
+  console.log("Operatore: " + operator + "\nPrimo Numero: " + firstNum);
 }
