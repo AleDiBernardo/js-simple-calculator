@@ -6,57 +6,30 @@
 function display() {
   const value = this.value;
 
-  let numConcat = displayElem;
-
   if (isNaN(parseInt(value))) {
-    const result = calculate(parseInt(numConcat.innerHTML), value);
-    numConcat.innerHTML = "";
+    const result = calculate(parseInt(displayElem.innerHTML), value);
+    displayElem.innerHTML = "";
   } else if (!isNaN(parseInt(value))) {
-    numConcat.innerHTML += parseInt(value);
-    console.log("Concatenazione: " + numConcat.innerHTML);
+    displayElem.innerHTML += parseInt(value);
+    console.log("Concatenazione: " + displayElem.innerHTML);
   }
   console.log(result.innerHTML);
 }
 
-// function calculate(operand, operator) {
-//   console.log("Numero: " + operand + " Operazione: " + operator);
-
-//   console.log();
-//   switch (operator) {
-//     case "+":
-//       console.log("somma");
-//       resultOp += operand;
-//       console.log("Somma: " + resultOp);
-//       break;
-//     case "-":
-//       console.log("sottrazione");
-//       resultOp -= operand;
-
-//       break;
-//     case "x":
-//       console.log("moltiplicazione");
-//       resultOp *= operand;
-
-//       break;
-//     case "÷":
-//       console.log("divisione");
-//       resultOp /= operand;
-
-//       break;
-//     case "c":
-//       resultOp = 0;
-//       break;
-//   }
-
-//   return resultOp;
-// }
-
+/**
+ * Clear the display
+ * @date 4/9/2024 - 11:00:58 AM
+ */
 function clearDisplay() {
   displayElem.innerHTML = "";
 }
 
+/**
+ * Saves the second number and does the calculations
+ * @date 4/9/2024 - 10:59:55 AM
+ */
 function calculate() {
-  secNum = parseInt(displayElem.innerHTML);
+  let secNum = parseInt(displayElem.innerHTML);
   console.log("Secondo Numero: " + secNum);
   switch (operator) {
     case "+":
@@ -69,19 +42,25 @@ function calculate() {
       displayElem.innerHTML = "" + (firstNum * secNum);
       break;
     case "÷":
-      displayElem.innerHTML = "" + (firstNum / secNum);
+      if (secNum === 0) {
+        displayElem.innerHTML = "Errore";
+      } else {
+        displayElem.innerHTML = "" + (firstNum / secNum);
+      }
       break;
 
     default:
       break;
   }
-
-  // console.log("calculate");
 }
 
+/**
+ * Save the operator and first num
+ * @date 4/9/2024 - 10:59:29 AM
+ */
 function operatorFunc() {
   operator = this.value;
   firstNum = parseInt(displayElem.innerHTML);
-  displayElem.innerHTML = "";
+  clearDisplay();
   console.log("Operatore: " + operator + "\nPrimo Numero: " + firstNum);
 }

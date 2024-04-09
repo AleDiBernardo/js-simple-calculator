@@ -2,9 +2,7 @@ const buttons = document.querySelectorAll("input");
 const displayElem = document.getElementById("result");
 
 
-let resultOp = 0;
 let firstNum = 0;
-let secNum = 0;
 let operator = "";
 
 // Adding Event Listener to number btn to display it
